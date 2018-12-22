@@ -1,0 +1,53 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:d="urn:import:com.google.gwt.user.datepicker.client"
+	xmlns:my="urn:import:de.oio.tmj.addressbook.client.ui.widget">
+	<ui:with type="de.oio.tmj.addressbook.client.ui.lang.AppMessages" field="messages"></ui:with>
+	<ui:with type="de.oio.tmj.addressbook.client.ui.bundle.Resources.Style" field="style"></ui:with>
+	<!-- <ui:style gss="true">
+	.label {
+		color: fuchsia;
+	}
+	.textBox {
+		border: 2px dotted lime;
+	}
+	</ui:style> -->
+	<g:HTMLPanel>
+		<div>
+			<g:Label addStyleNames="{style.label}" text="{messages.entryName}:">Name:</g:Label>
+			<my:ValidateableTextbox addStyleNames="{style.dialogboxWidget}" ui:field="nameTextbox"></my:ValidateableTextbox>
+		</div>
+		<div>
+			<g:Label addStyleNames="{style.label}" text="{messages.entryNick}:">Nick:</g:Label>
+			<my:ValidateableTextbox addStyleNames="{style.dialogboxWidget}" ui:field="nickTextbox"></my:ValidateableTextbox>
+		</div>
+		<div>
+			<span class="{style.label}">Adressen:</span>
+			<g:ListBox addStyleNames="{style.dialogboxWidget}" ui:field="addressesListbox"></g:ListBox>
+		</div>
+		<div>
+			<span class="{style.label}">Telefon:</span>
+			<g:ListBox addStyleNames="{style.dialogboxWidget}" ui:field="phoneListbox"></g:ListBox>
+		</div>
+		<div>
+			<span class="{style.label}">E-Mail:</span>
+			<g:Button ui:field="newMailButton" text="+">OK</g:Button>
+			<g:ListBox addStyleNames="{style.dialogboxWidget}" ui:field="mailListbox"></g:ListBox>
+		</div>
+		<div>
+			<span class="{style.label}">Geburtstag:</span>
+			<d:DatePicker ui:field="birthdayPicker"></d:DatePicker>
+<!-- 			<g:TextBox addStyleNames="{style.textBox}" ui:field="birthdayPicker"></g:TextBox> -->
+		</div>
+		<div>
+			<g:Label addStyleNames="{style.label}" text="{messages.entryNotes}:">Notes:</g:Label>
+			<g:TextBox addStyleNames="{style.textBox}" ui:field="notesTextbox"></g:TextBox>
+		</div>
+		<div>
+			<g:Button ui:field="okButton" text="{messages.ok}">OK</g:Button>
+			<g:Button ui:field="cancelButton" text="{messages.cancel}">Cancel</g:Button>
+		</div>
+		
+	</g:HTMLPanel>
+</ui:UiBinder> 

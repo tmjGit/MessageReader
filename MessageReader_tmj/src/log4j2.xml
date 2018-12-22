@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+	<Properties>
+		<Property name="colors">{FATAL=red blink, ERROR=red, WARN=yellow bold, DEBUG=green bold, TRACE=blue}</Property>
+<!-- 		<Property name="colors">{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=white, DEBUG=green bold, TRACE=blue}</Property> -->
+	</Properties>
+	<Appenders>
+		<Console name="conOutStd" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss} %-5level %c{1.} %msg%n"/>
+<!-- 			<PatternLayout pattern="%highlight{%d{HH:mm:ss} %-5level %c{1.} %msg%n}${colors}"/> -->
+		</Console>
+		<Console name="conOutDetail" target="SYSTEM_OUT">
+			<PatternLayout pattern="%highlight{%d{HH:mm:ss} %-5level [%t] %c{1.}.%M:%L %msg%n}${colors}"/>
+		</Console>
+		<Console name="conErr" target="SYSTEM_ERR">
+			<PatternLayout pattern="%highlight{%d{HH:mm:ss} %-5level [%t] %c{1.}.%M:%L %msg%n}${colors}"/>
+		</Console>
+		<RollingFile name="fileOut" fileName="C:\\Users\\mjt\\log\\WebWatchdog.log" filePattern="C:\\Users\\mjt\\log\\WebWatchdog_%d{yyyy-MM-dd--mm}.log">
+			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %logger{36} %msg%n"/>
+			<Policies>
+                <SizeBasedTriggeringPolicy size="5MB" />
+			</Policies>
+            <DefaultRolloverStrategy max="10"/>
+		</RollingFile>
+		<RollingFile name="fileErr" fileName="C:\\Users\\mjt\\log\\WebWatchdog.log" filePattern="C:\\Users\\mjt\\log\\WebWatchdog_%d{yyyy-MM-dd--mm}.log">
+			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss} [%t] %logger{36}.%M:%L %msg%n"/>
+			<Policies>
+                <SizeBasedTriggeringPolicy size="5MB" />
+			</Policies>
+            <DefaultRolloverStrategy max="10"/>
+		</RollingFile>
+
+	</Appenders>
+	<Loggers>
+		<Logger name="com.trivadis" level="info" additivity="false">
+			<AppenderRef ref="conOutDetail">       
+			     <LevelRangeFilter minLevel="DEBUG" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conOutStd">  
+			     <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="fileOut">
+			     <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="fileErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+		</Logger>
+		<Logger name="org" level="warn" additivity="false">
+			<AppenderRef ref="conOutDetail">       
+			     <LevelRangeFilter minLevel="DEBUG" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conOutStd">  
+			     <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+<!-- 			<AppenderRef ref="fileOut"> -->
+<!-- 			     <LevelRangeFilter minLevel="INFO" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/> -->
+<!-- 			</AppenderRef> -->
+			<AppenderRef ref="fileErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="conOutDetail">       
+			     <LevelRangeFilter minLevel="DEBUG" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conOutStd">  
+			     <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+			<AppenderRef ref="conErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+<!-- 			<AppenderRef ref="fileOut"> -->
+<!-- 			     <LevelRangeFilter minLevel="INFO" maxLevel="TRACE" onMatch="ACCEPT" onMismatch="DENY"/> -->
+<!-- 			</AppenderRef> -->
+			<AppenderRef ref="fileErr">
+			     <LevelRangeFilter minLevel="FATAL" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+			</AppenderRef>
+		</Root>
+	</Loggers>
+</Configuration>

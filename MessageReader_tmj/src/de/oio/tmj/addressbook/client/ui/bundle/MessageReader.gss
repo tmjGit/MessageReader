@@ -1,0 +1,27 @@
+.entry{
+	border: 1px solid orange;
+	padding: 3px;
+	background-color:blue
+}
+
+.entry>div{
+	display: inline-block;
+	width: 100px;
+}
+
+.dialogboxWidget{
+	display: block;
+	width: 250px;
+	background-color:yellow
+}
+
+
+
+.label {
+	color: fuchsia;
+}
+
+.textBox {
+	border: 2px dotted lime;
+	outline: 2px dashed maroon;
+}
